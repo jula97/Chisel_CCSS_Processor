@@ -1,0 +1,85 @@
+{
+	"partitions" : [
+		{
+			"name" : "Top",
+			"pins" : [
+				{
+					"name" : "io_seven[0]",
+					"strict" : false
+				},
+				{
+					"name" : "io_seven[1]",
+					"strict" : false
+				},
+				{
+					"name" : "io_seven[2]",
+					"strict" : false
+				},
+				{
+					"name" : "io_seven[3]",
+					"strict" : false
+				},
+				{
+					"name" : "io_seven[4]",
+					"strict" : false
+				},
+				{
+					"name" : "io_seven[5]",
+					"strict" : false
+				},
+				{
+					"name" : "io_seven[6]",
+					"strict" : false
+				},
+				{
+					"name" : "io_z",
+					"strict" : false
+				},
+				{
+					"name" : "io_bin[0]",
+					"strict" : false
+				},
+				{
+					"name" : "io_bin[4]",
+					"strict" : false
+				},
+				{
+					"name" : "io_bin[6]",
+					"strict" : false
+				},
+				{
+					"name" : "io_bin[5]",
+					"strict" : false
+				},
+				{
+					"name" : "io_bin[7]",
+					"strict" : false
+				},
+				{
+					"name" : "io_bin[3]",
+					"strict" : false
+				},
+				{
+					"name" : "io_bin[2]",
+					"strict" : false
+				},
+				{
+					"name" : "io_bin[1]",
+					"strict" : false
+				},
+				{
+					"name" : "io_bin[10]",
+					"strict" : false
+				},
+				{
+					"name" : "io_bin[9]",
+					"strict" : false
+				},
+				{
+					"name" : "io_bin[8]",
+					"strict" : false
+				}
+			]
+		}
+	]
+}
