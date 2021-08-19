@@ -1,0 +1,101 @@
+m255
+K4
+z2
+13
+!s112 1.1
+!i10d 8192
+!i10e 25
+!i10f 100
+cModel Technology
+Z0 dC:/Users/sthir/OneDrive - University of Moratuwa/Desktop/Chisel_Repo/Chisel_CCSS_Processor/Quartus_Project/Chisel_Processor/simulation/modelsim
+vbin27
+Z1 !s110 1629405512
+!i10b 1
+!s100 En6=z6LAdn[N3o<nKOAh50
+I4F>0a`DBIBCbY?eg;8GEV0
+Z2 VDg1SIo80bB@j0V0VzS_@n1
+R0
+Z3 w1629403600
+Z4 8C:/Users/sthir/OneDrive - University of Moratuwa/Desktop/Chisel_Repo/Chisel_CCSS_Processor/Quartus_Project/Chisel_Processor/RegTest.v
+Z5 FC:/Users/sthir/OneDrive - University of Moratuwa/Desktop/Chisel_Repo/Chisel_CCSS_Processor/Quartus_Project/Chisel_Processor/RegTest.v
+L0 73
+Z6 OV;L;10.5b;63
+r1
+!s85 0
+31
+Z7 !s108 1629405512.000000
+Z8 !s107 C:/Users/sthir/OneDrive - University of Moratuwa/Desktop/Chisel_Repo/Chisel_CCSS_Processor/Quartus_Project/Chisel_Processor/RegTest.v|
+Z9 !s90 -reportprogress|300|-vlog01compat|-work|work|+incdir+C:/Users/sthir/OneDrive - University of Moratuwa/Desktop/Chisel_Repo/Chisel_CCSS_Processor/Quartus_Project/Chisel_Processor|C:/Users/sthir/OneDrive - University of Moratuwa/Desktop/Chisel_Repo/Chisel_CCSS_Processor/Quartus_Project/Chisel_Processor/RegTest.v|
+!i113 1
+Z10 o-vlog01compat -work work
+Z11 !s92 -vlog01compat -work work {+incdir+C:/Users/sthir/OneDrive - University of Moratuwa/Desktop/Chisel_Repo/Chisel_CCSS_Processor/Quartus_Project/Chisel_Processor}
+Z12 tCvgOpt 0
+vRegisters
+R1
+!i10b 1
+!s100 iPKS>SX[S24`?RIE8z5AC3
+I`=DzIX4o@OIL]0@3]nmnf0
+R2
+R0
+R3
+R4
+R5
+L0 1
+R6
+r1
+!s85 0
+31
+R7
+R8
+R9
+!i113 1
+R10
+R11
+R12
+n@registers
+vRegTest
+R1
+!i10b 1
+!s100 kXI@a86dY?OMPIOm9efVc2
+Im<@K1z3GPNkdcgOhc@PIn2
+R2
+R0
+R3
+R4
+R5
+L0 111
+R6
+r1
+!s85 0
+31
+R7
+R8
+R9
+!i113 1
+R10
+R11
+R12
+n@reg@test
+vRegTest_tb
+R1
+!i10b 1
+!s100 h7D:of`?WeGB;YXTY]Q2k3
+Ie0BJ]IcmjVE001W@GBjmn0
+R2
+R0
+w1629405453
+8C:/Users/sthir/OneDrive - University of Moratuwa/Desktop/Chisel_Repo/Chisel_CCSS_Processor/Quartus_Project/Chisel_Processor/RegTest_tb.v
+FC:/Users/sthir/OneDrive - University of Moratuwa/Desktop/Chisel_Repo/Chisel_CCSS_Processor/Quartus_Project/Chisel_Processor/RegTest_tb.v
+L0 3
+R6
+r1
+!s85 0
+31
+R7
+!s107 C:/Users/sthir/OneDrive - University of Moratuwa/Desktop/Chisel_Repo/Chisel_CCSS_Processor/Quartus_Project/Chisel_Processor/RegTest_tb.v|
+!s90 -reportprogress|300|-vlog01compat|-work|work|+incdir+C:/Users/sthir/OneDrive - University of Moratuwa/Desktop/Chisel_Repo/Chisel_CCSS_Processor/Quartus_Project/Chisel_Processor|C:/Users/sthir/OneDrive - University of Moratuwa/Desktop/Chisel_Repo/Chisel_CCSS_Processor/Quartus_Project/Chisel_Processor/RegTest_tb.v|
+!i113 1
+R10
+R11
+R12
+n@reg@test_tb

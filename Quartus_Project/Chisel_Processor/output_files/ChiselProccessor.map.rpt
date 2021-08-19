@@ -1,5 +1,5 @@
 Analysis & Synthesis report for ChiselProccessor
-Fri Aug 06 17:01:53 2021
+Fri Aug 20 02:08:11 2021
 Quartus Prime Version 20.1.0 Build 711 06/05/2020 SJ Lite Edition
 
 
@@ -13,16 +13,14 @@ Quartus Prime Version 20.1.0 Build 711 06/05/2020 SJ Lite Edition
   5. Analysis & Synthesis Source Files Read
   6. Analysis & Synthesis Resource Usage Summary
   7. Analysis & Synthesis Resource Utilization by Entity
-  8. General Register Statistics
-  9. Multiplexer Restructuring Statistics (Restructuring Performed)
- 10. Parameter Settings for Inferred Entity Instance: ALU:ALU|lpm_divide:Div0
- 11. Parameter Settings for Inferred Entity Instance: ALU:ALU|lpm_mult:Mult0
- 12. Parameter Settings for Inferred Entity Instance: ALU:ALU|lpm_divide:Mod0
- 13. lpm_mult Parameter Settings by Entity Instance
- 14. Port Connectivity Checks: "ALU:ALU"
- 15. Post-Synthesis Netlist Statistics for Top Partition
- 16. Elapsed Time Per Partition
- 17. Analysis & Synthesis Messages
+  8. Registers Removed During Synthesis
+  9. Removed Registers Triggering Further Register Optimizations
+ 10. General Register Statistics
+ 11. Multiplexer Restructuring Statistics (Restructuring Performed)
+ 12. Port Connectivity Checks: "Registers:sumReg"
+ 13. Post-Synthesis Netlist Statistics for Top Partition
+ 14. Elapsed Time Per Partition
+ 15. Analysis & Synthesis Messages
 
 
 
@@ -49,16 +47,16 @@ https://fpgasoftware.intel.com/eula.
 +----------------------------------------------------------------------------------+
 ; Analysis & Synthesis Summary                                                     ;
 +------------------------------------+---------------------------------------------+
-; Analysis & Synthesis Status        ; Successful - Fri Aug 06 17:01:53 2021       ;
+; Analysis & Synthesis Status        ; Successful - Fri Aug 20 02:08:11 2021       ;
 ; Quartus Prime Version              ; 20.1.0 Build 711 06/05/2020 SJ Lite Edition ;
 ; Revision Name                      ; ChiselProccessor                            ;
-; Top-level Entity Name              ; processor                                   ;
+; Top-level Entity Name              ; RegTest                                     ;
 ; Family                             ; Cyclone IV E                                ;
-; Total logic elements               ; 801                                         ;
-;     Total combinational functions  ; 801                                         ;
-;     Dedicated logic registers      ; 0                                           ;
-; Total registers                    ; 0                                           ;
-; Total pins                         ; 22                                          ;
+; Total logic elements               ; 18                                          ;
+;     Total combinational functions  ; 18                                          ;
+;     Dedicated logic registers      ; 4                                           ;
+; Total registers                    ; 4                                           ;
+; Total pins                         ; 21                                          ;
 ; Total virtual pins                 ; 0                                           ;
 ; Total memory bits                  ; 0                                           ;
 ; Embedded Multiplier 9-bit elements ; 0                                           ;
@@ -72,7 +70,7 @@ https://fpgasoftware.intel.com/eula.
 ; Option                                                           ; Setting            ; Default Value      ;
 +------------------------------------------------------------------+--------------------+--------------------+
 ; Device                                                           ; EP4CE115F29C7      ;                    ;
-; Top-level entity name                                            ; processor          ; ChiselProccessor   ;
+; Top-level entity name                                            ; RegTest            ; ChiselProccessor   ;
 ; Family name                                                      ; Cyclone IV E       ; Cyclone V          ;
 ; Use smart compilation                                            ; Off                ; Off                ;
 ; Enable parallel Assembler and Timing Analyzer during compilation ; On                 ; On                 ;
@@ -161,90 +159,90 @@ https://fpgasoftware.intel.com/eula.
 ; Maximum allowed            ; 4           ;
 ;                            ;             ;
 ; Average used               ; 1.00        ;
-; Maximum used               ; 1           ;
+; Maximum used               ; 4           ;
 ;                            ;             ;
 ; Usage by Processor         ; % Time Used ;
 ;     Processor 1            ; 100.0%      ;
+;     Processor 2            ;   0.0%      ;
+;     Processors 3-4         ;   0.0%      ;
 +----------------------------+-------------+
 
 
-+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-; Analysis & Synthesis Source Files Read                                                                                                                                                             ;
-+----------------------------------+-----------------+------------------------------+------------------------------------------------------------------------------------------------------+---------+
-; File Name with User-Entered Path ; Used in Netlist ; File Type                    ; File Name with Absolute Path                                                                         ; Library ;
-+----------------------------------+-----------------+------------------------------+------------------------------------------------------------------------------------------------------+---------+
-; processor.v                      ; yes             ; User Verilog HDL File        ; C:/Users/sthir/OneDrive - University of Moratuwa/Desktop/Chisel_Processor/processor.v                ;         ;
-; lpm_divide.tdf                   ; yes             ; Megafunction                 ; c:/intelfpga_lite/20.1/quartus/libraries/megafunctions/lpm_divide.tdf                                ;         ;
-; abs_divider.inc                  ; yes             ; Megafunction                 ; c:/intelfpga_lite/20.1/quartus/libraries/megafunctions/abs_divider.inc                               ;         ;
-; sign_div_unsign.inc              ; yes             ; Megafunction                 ; c:/intelfpga_lite/20.1/quartus/libraries/megafunctions/sign_div_unsign.inc                           ;         ;
-; aglobal201.inc                   ; yes             ; Megafunction                 ; c:/intelfpga_lite/20.1/quartus/libraries/megafunctions/aglobal201.inc                                ;         ;
-; db/lpm_divide_lkm.tdf            ; yes             ; Auto-Generated Megafunction  ; C:/Users/sthir/OneDrive - University of Moratuwa/Desktop/Chisel_Processor/db/lpm_divide_lkm.tdf      ;         ;
-; db/sign_div_unsign_dnh.tdf       ; yes             ; Auto-Generated Megafunction  ; C:/Users/sthir/OneDrive - University of Moratuwa/Desktop/Chisel_Processor/db/sign_div_unsign_dnh.tdf ;         ;
-; db/alt_u_div_eaf.tdf             ; yes             ; Auto-Generated Megafunction  ; C:/Users/sthir/OneDrive - University of Moratuwa/Desktop/Chisel_Processor/db/alt_u_div_eaf.tdf       ;         ;
-; db/add_sub_7pc.tdf               ; yes             ; Auto-Generated Megafunction  ; C:/Users/sthir/OneDrive - University of Moratuwa/Desktop/Chisel_Processor/db/add_sub_7pc.tdf         ;         ;
-; db/add_sub_8pc.tdf               ; yes             ; Auto-Generated Megafunction  ; C:/Users/sthir/OneDrive - University of Moratuwa/Desktop/Chisel_Processor/db/add_sub_8pc.tdf         ;         ;
-; lpm_mult.tdf                     ; yes             ; Megafunction                 ; c:/intelfpga_lite/20.1/quartus/libraries/megafunctions/lpm_mult.tdf                                  ;         ;
-; lpm_add_sub.inc                  ; yes             ; Megafunction                 ; c:/intelfpga_lite/20.1/quartus/libraries/megafunctions/lpm_add_sub.inc                               ;         ;
-; multcore.inc                     ; yes             ; Megafunction                 ; c:/intelfpga_lite/20.1/quartus/libraries/megafunctions/multcore.inc                                  ;         ;
-; bypassff.inc                     ; yes             ; Megafunction                 ; c:/intelfpga_lite/20.1/quartus/libraries/megafunctions/bypassff.inc                                  ;         ;
-; altshift.inc                     ; yes             ; Megafunction                 ; c:/intelfpga_lite/20.1/quartus/libraries/megafunctions/altshift.inc                                  ;         ;
-; db/mult_j8t.tdf                  ; yes             ; Auto-Generated Megafunction  ; C:/Users/sthir/OneDrive - University of Moratuwa/Desktop/Chisel_Processor/db/mult_j8t.tdf            ;         ;
-; db/lpm_divide_ocm.tdf            ; yes             ; Auto-Generated Megafunction  ; C:/Users/sthir/OneDrive - University of Moratuwa/Desktop/Chisel_Processor/db/lpm_divide_ocm.tdf      ;         ;
-+----------------------------------+-----------------+------------------------------+------------------------------------------------------------------------------------------------------+---------+
++-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+; Analysis & Synthesis Source Files Read                                                                                                                                                                                        ;
++----------------------------------+-----------------+------------------------+---------------------------------------------------------------------------------------------------------------------------------------+---------+
+; File Name with User-Entered Path ; Used in Netlist ; File Type              ; File Name with Absolute Path                                                                                                          ; Library ;
++----------------------------------+-----------------+------------------------+---------------------------------------------------------------------------------------------------------------------------------------+---------+
+; RegTest.v                        ; yes             ; User Verilog HDL File  ; C:/Users/sthir/OneDrive - University of Moratuwa/Desktop/Chisel_Repo/Chisel_CCSS_Processor/Quartus_Project/Chisel_Processor/RegTest.v ;         ;
++----------------------------------+-----------------+------------------------+---------------------------------------------------------------------------------------------------------------------------------------+---------+
 
 
-+---------------------------------------------------------------+
-; Analysis & Synthesis Resource Usage Summary                   ;
-+---------------------------------------------+-----------------+
-; Resource                                    ; Usage           ;
-+---------------------------------------------+-----------------+
-; Estimated Total logic elements              ; 801             ;
-;                                             ;                 ;
-; Total combinational functions               ; 801             ;
-; Logic element usage by number of LUT inputs ;                 ;
-;     -- 4 input functions                    ; 245             ;
-;     -- 3 input functions                    ; 317             ;
-;     -- <=2 input functions                  ; 239             ;
-;                                             ;                 ;
-; Logic elements by mode                      ;                 ;
-;     -- normal mode                          ; 514             ;
-;     -- arithmetic mode                      ; 287             ;
-;                                             ;                 ;
-; Total registers                             ; 0               ;
-;     -- Dedicated logic registers            ; 0               ;
-;     -- I/O registers                        ; 0               ;
-;                                             ;                 ;
-; I/O pins                                    ; 22              ;
-;                                             ;                 ;
-; Embedded Multiplier 9-bit elements          ; 0               ;
-;                                             ;                 ;
-; Maximum fan-out node                        ; io_bin[4]~input ;
-; Maximum fan-out                             ; 74              ;
-; Total fan-out                               ; 2378            ;
-; Average fan-out                             ; 2.81            ;
-+---------------------------------------------+-----------------+
++-------------------------------------------------------------------------------+
+; Analysis & Synthesis Resource Usage Summary                                   ;
++---------------------------------------------+---------------------------------+
+; Resource                                    ; Usage                           ;
++---------------------------------------------+---------------------------------+
+; Estimated Total logic elements              ; 18                              ;
+;                                             ;                                 ;
+; Total combinational functions               ; 18                              ;
+; Logic element usage by number of LUT inputs ;                                 ;
+;     -- 4 input functions                    ; 12                              ;
+;     -- 3 input functions                    ; 1                               ;
+;     -- <=2 input functions                  ; 5                               ;
+;                                             ;                                 ;
+; Logic elements by mode                      ;                                 ;
+;     -- normal mode                          ; 15                              ;
+;     -- arithmetic mode                      ; 3                               ;
+;                                             ;                                 ;
+; Total registers                             ; 4                               ;
+;     -- Dedicated logic registers            ; 4                               ;
+;     -- I/O registers                        ; 0                               ;
+;                                             ;                                 ;
+; I/O pins                                    ; 21                              ;
+;                                             ;                                 ;
+; Embedded Multiplier 9-bit elements          ; 0                               ;
+;                                             ;                                 ;
+; Maximum fan-out node                        ; Registers:sumReg|registerOut[0] ;
+; Maximum fan-out                             ; 8                               ;
+; Total fan-out                               ; 100                             ;
+; Average fan-out                             ; 1.56                            ;
++---------------------------------------------+---------------------------------+
 
 
-+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-; Analysis & Synthesis Resource Utilization by Entity                                                                                                                                                                                                                                                                            ;
-+-------------------------------------------+---------------------+---------------------------+-------------+--------------+---------+-----------+------+--------------+--------------------------------------------------------------------------------------------------------------------+---------------------+--------------+
-; Compilation Hierarchy Node                ; Combinational ALUTs ; Dedicated Logic Registers ; Memory Bits ; DSP Elements ; DSP 9x9 ; DSP 18x18 ; Pins ; Virtual Pins ; Full Hierarchy Name                                                                                                ; Entity Name         ; Library Name ;
-+-------------------------------------------+---------------------+---------------------------+-------------+--------------+---------+-----------+------+--------------+--------------------------------------------------------------------------------------------------------------------+---------------------+--------------+
-; |processor                                ; 801 (0)             ; 0 (0)                     ; 0           ; 0            ; 0       ; 0         ; 22   ; 0            ; |processor                                                                                                         ; processor           ; work         ;
-;    |ALU:ALU|                              ; 794 (72)            ; 0 (0)                     ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |processor|ALU:ALU                                                                                                 ; ALU                 ; work         ;
-;       |lpm_divide:Div0|                   ; 342 (0)             ; 0 (0)                     ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |processor|ALU:ALU|lpm_divide:Div0                                                                                 ; lpm_divide          ; work         ;
-;          |lpm_divide_lkm:auto_generated|  ; 342 (0)             ; 0 (0)                     ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |processor|ALU:ALU|lpm_divide:Div0|lpm_divide_lkm:auto_generated                                                   ; lpm_divide_lkm      ; work         ;
-;             |sign_div_unsign_dnh:divider| ; 342 (0)             ; 0 (0)                     ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |processor|ALU:ALU|lpm_divide:Div0|lpm_divide_lkm:auto_generated|sign_div_unsign_dnh:divider                       ; sign_div_unsign_dnh ; work         ;
-;                |alt_u_div_eaf:divider|    ; 342 (342)           ; 0 (0)                     ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |processor|ALU:ALU|lpm_divide:Div0|lpm_divide_lkm:auto_generated|sign_div_unsign_dnh:divider|alt_u_div_eaf:divider ; alt_u_div_eaf       ; work         ;
-;       |lpm_divide:Mod0|                   ; 350 (0)             ; 0 (0)                     ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |processor|ALU:ALU|lpm_divide:Mod0                                                                                 ; lpm_divide          ; work         ;
-;          |lpm_divide_ocm:auto_generated|  ; 350 (0)             ; 0 (0)                     ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |processor|ALU:ALU|lpm_divide:Mod0|lpm_divide_ocm:auto_generated                                                   ; lpm_divide_ocm      ; work         ;
-;             |sign_div_unsign_dnh:divider| ; 350 (0)             ; 0 (0)                     ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |processor|ALU:ALU|lpm_divide:Mod0|lpm_divide_ocm:auto_generated|sign_div_unsign_dnh:divider                       ; sign_div_unsign_dnh ; work         ;
-;                |alt_u_div_eaf:divider|    ; 350 (350)           ; 0 (0)                     ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |processor|ALU:ALU|lpm_divide:Mod0|lpm_divide_ocm:auto_generated|sign_div_unsign_dnh:divider|alt_u_div_eaf:divider ; alt_u_div_eaf       ; work         ;
-;       |lpm_mult:Mult0|                    ; 30 (0)              ; 0 (0)                     ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |processor|ALU:ALU|lpm_mult:Mult0                                                                                  ; lpm_mult            ; work         ;
-;          |mult_j8t:auto_generated|        ; 30 (30)             ; 0 (0)                     ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |processor|ALU:ALU|lpm_mult:Mult0|mult_j8t:auto_generated                                                          ; mult_j8t            ; work         ;
-;    |bin27:Bin27|                          ; 7 (7)               ; 0 (0)                     ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |processor|bin27:Bin27                                                                                             ; bin27               ; work         ;
-+-------------------------------------------+---------------------+---------------------------+-------------+--------------+---------+-----------+------+--------------+--------------------------------------------------------------------------------------------------------------------+---------------------+--------------+
++----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+; Analysis & Synthesis Resource Utilization by Entity                                                                                                                                                            ;
++----------------------------+---------------------+---------------------------+-------------+--------------+---------+-----------+------+--------------+---------------------------+-------------+--------------+
+; Compilation Hierarchy Node ; Combinational ALUTs ; Dedicated Logic Registers ; Memory Bits ; DSP Elements ; DSP 9x9 ; DSP 18x18 ; Pins ; Virtual Pins ; Full Hierarchy Name       ; Entity Name ; Library Name ;
++----------------------------+---------------------+---------------------------+-------------+--------------+---------+-----------+------+--------------+---------------------------+-------------+--------------+
+; |RegTest                   ; 18 (0)              ; 4 (0)                     ; 0           ; 0            ; 0       ; 0         ; 21   ; 0            ; |RegTest                  ; RegTest     ; work         ;
+;    |Registers:sumReg|      ; 11 (11)             ; 4 (4)                     ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |RegTest|Registers:sumReg ; Registers   ; work         ;
+;    |bin27:Bin27|           ; 7 (7)               ; 0 (0)                     ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |RegTest|bin27:Bin27      ; bin27       ; work         ;
++----------------------------+---------------------+---------------------------+-------------+--------------+---------+-----------+------+--------------+---------------------------+-------------+--------------+
 Note: For table entries with two numbers listed, the numbers in parentheses indicate the number of resources of the given type used by the specific entity alone. The numbers listed outside of parentheses indicate the total resources of the given type used by the specific entity and all of its sub-entities in the hierarchy.
+
+
++-------------------------------------------------------------+
+; Registers Removed During Synthesis                          ;
++----------------------------------------+--------------------+
+; Register name                          ; Reason for Removal ;
++----------------------------------------+--------------------+
+; Registers:sumReg|registerOut[4..15]    ; Lost fanout        ;
+; Total Number of Removed Registers = 12 ;                    ;
++----------------------------------------+--------------------+
+
+
++-----------------------------------------------------------------------------------------------------------------------------+
+; Removed Registers Triggering Further Register Optimizations                                                                 ;
++----------------------------------+--------------------+---------------------------------------------------------------------+
+; Register name                    ; Reason for Removal ; Registers Removed due to This Register                              ;
++----------------------------------+--------------------+---------------------------------------------------------------------+
+; Registers:sumReg|registerOut[15] ; Lost Fanouts       ; Registers:sumReg|registerOut[14], Registers:sumReg|registerOut[13], ;
+;                                  ;                    ; Registers:sumReg|registerOut[12], Registers:sumReg|registerOut[11], ;
+;                                  ;                    ; Registers:sumReg|registerOut[10], Registers:sumReg|registerOut[9],  ;
+;                                  ;                    ; Registers:sumReg|registerOut[8], Registers:sumReg|registerOut[7],   ;
+;                                  ;                    ; Registers:sumReg|registerOut[6], Registers:sumReg|registerOut[5],   ;
+;                                  ;                    ; Registers:sumReg|registerOut[4]                                     ;
++----------------------------------+--------------------+---------------------------------------------------------------------+
 
 
 +------------------------------------------------------+
@@ -252,137 +250,34 @@ Note: For table entries with two numbers listed, the numbers in parentheses indi
 +----------------------------------------------+-------+
 ; Statistic                                    ; Value ;
 +----------------------------------------------+-------+
-; Total registers                              ; 0     ;
+; Total registers                              ; 4     ;
 ; Number of registers using Synchronous Clear  ; 0     ;
 ; Number of registers using Synchronous Load   ; 0     ;
 ; Number of registers using Asynchronous Clear ; 0     ;
 ; Number of registers using Asynchronous Load  ; 0     ;
-; Number of registers using Clock Enable       ; 0     ;
+; Number of registers using Clock Enable       ; 4     ;
 ; Number of registers using Preset             ; 0     ;
 +----------------------------------------------+-------+
 
 
-+---------------------------------------------------------------------------------------------------------------------------------------------+
-; Multiplexer Restructuring Statistics (Restructuring Performed)                                                                              ;
-+--------------------+-----------+---------------+----------------------+------------------------+------------+-------------------------------+
-; Multiplexer Inputs ; Bus Width ; Baseline Area ; Area if Restructured ; Saving if Restructured ; Registered ; Example Multiplexer Output    ;
-+--------------------+-----------+---------------+----------------------+------------------------+------------+-------------------------------+
-; 8:1                ; 3 bits    ; 15 LEs        ; 12 LEs               ; 3 LEs                  ; No         ; |processor|ALU:ALU|_GEN_6[1]  ;
-; 4:1                ; 8 bits    ; 16 LEs        ; 16 LEs               ; 0 LEs                  ; No         ; |processor|ALU:ALU|_GEN_6[15] ;
-; 6:1                ; 3 bits    ; 12 LEs        ; 6 LEs                ; 6 LEs                  ; No         ; |processor|ALU:ALU|_GEN_6[7]  ;
-+--------------------+-----------+---------------+----------------------+------------------------+------------+-------------------------------+
++---------------------------------------------------------------------------------------------------------------------------------------------------------+
+; Multiplexer Restructuring Statistics (Restructuring Performed)                                                                                          ;
++--------------------+-----------+---------------+----------------------+------------------------+------------+-------------------------------------------+
+; Multiplexer Inputs ; Bus Width ; Baseline Area ; Area if Restructured ; Saving if Restructured ; Registered ; Example Multiplexer Output                ;
++--------------------+-----------+---------------+----------------------+------------------------+------------+-------------------------------------------+
+; 5:1                ; 12 bits   ; 36 LEs        ; 12 LEs               ; 24 LEs                 ; Yes        ; |RegTest|Registers:sumReg|registerOut[15] ;
+; 5:1                ; 4 bits    ; 12 LEs        ; 8 LEs                ; 4 LEs                  ; Yes        ; |RegTest|Registers:sumReg|registerOut[3]  ;
++--------------------+-----------+---------------+----------------------+------------------------+------------+-------------------------------------------+
 
 
-+--------------------------------------------------------------------------+
-; Parameter Settings for Inferred Entity Instance: ALU:ALU|lpm_divide:Div0 ;
-+------------------------+----------------+--------------------------------+
-; Parameter Name         ; Value          ; Type                           ;
-+------------------------+----------------+--------------------------------+
-; LPM_WIDTHN             ; 16             ; Untyped                        ;
-; LPM_WIDTHD             ; 16             ; Untyped                        ;
-; LPM_NREPRESENTATION    ; UNSIGNED       ; Untyped                        ;
-; LPM_DREPRESENTATION    ; UNSIGNED       ; Untyped                        ;
-; LPM_PIPELINE           ; 0              ; Untyped                        ;
-; LPM_REMAINDERPOSITIVE  ; TRUE           ; Untyped                        ;
-; MAXIMIZE_SPEED         ; 5              ; Untyped                        ;
-; CBXI_PARAMETER         ; lpm_divide_lkm ; Untyped                        ;
-; CARRY_CHAIN            ; MANUAL         ; Untyped                        ;
-; OPTIMIZE_FOR_SPEED     ; 5              ; Untyped                        ;
-; AUTO_CARRY_CHAINS      ; ON             ; AUTO_CARRY                     ;
-; IGNORE_CARRY_BUFFERS   ; OFF            ; IGNORE_CARRY                   ;
-; AUTO_CASCADE_CHAINS    ; ON             ; AUTO_CASCADE                   ;
-; IGNORE_CASCADE_BUFFERS ; OFF            ; IGNORE_CASCADE                 ;
-+------------------------+----------------+--------------------------------+
-Note: In order to hide this table in the UI and the text report file, please set the "Show Parameter Settings in Synthesis Report" option in "Analysis and Synthesis Settings -> More Settings" to "Off".
-
-
-+-------------------------------------------------------------------------------------+
-; Parameter Settings for Inferred Entity Instance: ALU:ALU|lpm_mult:Mult0             ;
-+------------------------------------------------+--------------+---------------------+
-; Parameter Name                                 ; Value        ; Type                ;
-+------------------------------------------------+--------------+---------------------+
-; AUTO_CARRY_CHAINS                              ; ON           ; AUTO_CARRY          ;
-; IGNORE_CARRY_BUFFERS                           ; OFF          ; IGNORE_CARRY        ;
-; AUTO_CASCADE_CHAINS                            ; ON           ; AUTO_CASCADE        ;
-; IGNORE_CASCADE_BUFFERS                         ; OFF          ; IGNORE_CASCADE      ;
-; LPM_WIDTHA                                     ; 4            ; Untyped             ;
-; LPM_WIDTHB                                     ; 4            ; Untyped             ;
-; LPM_WIDTHP                                     ; 8            ; Untyped             ;
-; LPM_WIDTHR                                     ; 8            ; Untyped             ;
-; LPM_WIDTHS                                     ; 1            ; Untyped             ;
-; LPM_REPRESENTATION                             ; UNSIGNED     ; Untyped             ;
-; LPM_PIPELINE                                   ; 0            ; Untyped             ;
-; LATENCY                                        ; 0            ; Untyped             ;
-; INPUT_A_IS_CONSTANT                            ; NO           ; Untyped             ;
-; INPUT_B_IS_CONSTANT                            ; NO           ; Untyped             ;
-; USE_EAB                                        ; OFF          ; Untyped             ;
-; MAXIMIZE_SPEED                                 ; 5            ; Untyped             ;
-; DEVICE_FAMILY                                  ; Cyclone IV E ; Untyped             ;
-; CARRY_CHAIN                                    ; MANUAL       ; Untyped             ;
-; APEX20K_TECHNOLOGY_MAPPER                      ; LUT          ; TECH_MAPPER_APEX20K ;
-; DEDICATED_MULTIPLIER_CIRCUITRY                 ; AUTO         ; Untyped             ;
-; DEDICATED_MULTIPLIER_MIN_INPUT_WIDTH_FOR_AUTO  ; 0            ; Untyped             ;
-; DEDICATED_MULTIPLIER_MIN_OUTPUT_WIDTH_FOR_AUTO ; 0            ; Untyped             ;
-; CBXI_PARAMETER                                 ; mult_j8t     ; Untyped             ;
-; INPUT_A_FIXED_VALUE                            ; Bx           ; Untyped             ;
-; INPUT_B_FIXED_VALUE                            ; Bx           ; Untyped             ;
-; USE_AHDL_IMPLEMENTATION                        ; OFF          ; Untyped             ;
-+------------------------------------------------+--------------+---------------------+
-Note: In order to hide this table in the UI and the text report file, please set the "Show Parameter Settings in Synthesis Report" option in "Analysis and Synthesis Settings -> More Settings" to "Off".
-
-
-+--------------------------------------------------------------------------+
-; Parameter Settings for Inferred Entity Instance: ALU:ALU|lpm_divide:Mod0 ;
-+------------------------+----------------+--------------------------------+
-; Parameter Name         ; Value          ; Type                           ;
-+------------------------+----------------+--------------------------------+
-; LPM_WIDTHN             ; 16             ; Untyped                        ;
-; LPM_WIDTHD             ; 16             ; Untyped                        ;
-; LPM_NREPRESENTATION    ; UNSIGNED       ; Untyped                        ;
-; LPM_DREPRESENTATION    ; UNSIGNED       ; Untyped                        ;
-; LPM_PIPELINE           ; 0              ; Untyped                        ;
-; LPM_REMAINDERPOSITIVE  ; TRUE           ; Untyped                        ;
-; MAXIMIZE_SPEED         ; 5              ; Untyped                        ;
-; CBXI_PARAMETER         ; lpm_divide_ocm ; Untyped                        ;
-; CARRY_CHAIN            ; MANUAL         ; Untyped                        ;
-; OPTIMIZE_FOR_SPEED     ; 5              ; Untyped                        ;
-; AUTO_CARRY_CHAINS      ; ON             ; AUTO_CARRY                     ;
-; IGNORE_CARRY_BUFFERS   ; OFF            ; IGNORE_CARRY                   ;
-; AUTO_CASCADE_CHAINS    ; ON             ; AUTO_CASCADE                   ;
-; IGNORE_CASCADE_BUFFERS ; OFF            ; IGNORE_CASCADE                 ;
-+------------------------+----------------+--------------------------------+
-Note: In order to hide this table in the UI and the text report file, please set the "Show Parameter Settings in Synthesis Report" option in "Analysis and Synthesis Settings -> More Settings" to "Off".
-
-
-+----------------------------------------------------------------+
-; lpm_mult Parameter Settings by Entity Instance                 ;
-+---------------------------------------+------------------------+
-; Name                                  ; Value                  ;
-+---------------------------------------+------------------------+
-; Number of entity instances            ; 1                      ;
-; Entity Instance                       ; ALU:ALU|lpm_mult:Mult0 ;
-;     -- LPM_WIDTHA                     ; 4                      ;
-;     -- LPM_WIDTHB                     ; 4                      ;
-;     -- LPM_WIDTHP                     ; 8                      ;
-;     -- LPM_REPRESENTATION             ; UNSIGNED               ;
-;     -- INPUT_A_IS_CONSTANT            ; NO                     ;
-;     -- INPUT_B_IS_CONSTANT            ; NO                     ;
-;     -- USE_EAB                        ; OFF                    ;
-;     -- DEDICATED_MULTIPLIER_CIRCUITRY ; AUTO                   ;
-;     -- INPUT_A_FIXED_VALUE            ; Bx                     ;
-;     -- INPUT_B_FIXED_VALUE            ; Bx                     ;
-+---------------------------------------+------------------------+
-
-
-+-----------------------------------------------------------------------------------------------------------------------+
-; Port Connectivity Checks: "ALU:ALU"                                                                                   ;
-+-------------+--------+----------+-------------------------------------------------------------------------------------+
-; Port        ; Type   ; Severity ; Details                                                                             ;
-+-------------+--------+----------+-------------------------------------------------------------------------------------+
-; io_a[15..4] ; Input  ; Info     ; Stuck at GND                                                                        ;
-; io_b[15..4] ; Input  ; Info     ; Stuck at GND                                                                        ;
-; io_y[15..4] ; Output ; Info     ; Connected to dangling logic. Logic that only feeds a dangling port will be removed. ;
-+-------------+--------+----------+-------------------------------------------------------------------------------------+
++----------------------------------------------------------------------------------------------------------------------------+
+; Port Connectivity Checks: "Registers:sumReg"                                                                               ;
++------------------+--------+----------+-------------------------------------------------------------------------------------+
+; Port             ; Type   ; Severity ; Details                                                                             ;
++------------------+--------+----------+-------------------------------------------------------------------------------------+
+; io_regIn[15..4]  ; Input  ; Info     ; Stuck at GND                                                                        ;
+; io_regOut[15..4] ; Output ; Info     ; Connected to dangling logic. Logic that only feeds a dangling port will be removed. ;
++------------------+--------+----------+-------------------------------------------------------------------------------------+
 
 
 +-----------------------------------------------------+
@@ -390,21 +285,20 @@ Note: In order to hide this table in the UI and the text report file, please set
 +-----------------------+-----------------------------+
 ; Type                  ; Count                       ;
 +-----------------------+-----------------------------+
-; boundary_port         ; 22                          ;
-; cycloneiii_lcell_comb ; 802                         ;
-;     arith             ; 287                         ;
-;         1 data inputs ; 1                           ;
-;         2 data inputs ; 26                          ;
-;         3 data inputs ; 260                         ;
-;     normal            ; 515                         ;
-;         0 data inputs ; 30                          ;
-;         1 data inputs ; 1                           ;
-;         2 data inputs ; 182                         ;
-;         3 data inputs ; 57                          ;
-;         4 data inputs ; 245                         ;
+; boundary_port         ; 21                          ;
+; cycloneiii_ff         ; 4                           ;
+;     ENA               ; 4                           ;
+; cycloneiii_lcell_comb ; 20                          ;
+;     arith             ; 3                           ;
+;         2 data inputs ; 3                           ;
+;     normal            ; 17                          ;
+;         1 data inputs ; 3                           ;
+;         2 data inputs ; 1                           ;
+;         3 data inputs ; 1                           ;
+;         4 data inputs ; 12                          ;
 ;                       ;                             ;
-; Max LUT depth         ; 49.00                       ;
-; Average LUT depth     ; 43.23                       ;
+; Max LUT depth         ; 2.30                        ;
+; Average LUT depth     ; 1.71                        ;
 +-----------------------+-----------------------------+
 
 
@@ -413,7 +307,7 @@ Note: In order to hide this table in the UI and the text report file, please set
 +----------------+--------------+
 ; Partition Name ; Elapsed Time ;
 +----------------+--------------+
-; Top            ; 00:00:03     ;
+; Top            ; 00:00:00     ;
 +----------------+--------------+
 
 
@@ -423,79 +317,37 @@ Note: In order to hide this table in the UI and the text report file, please set
 Info: *******************************************************************
 Info: Running Quartus Prime Analysis & Synthesis
     Info: Version 20.1.0 Build 711 06/05/2020 SJ Lite Edition
-    Info: Processing started: Fri Aug 06 17:01:40 2021
+    Info: Processing started: Fri Aug 20 02:08:00 2021
 Info: Command: quartus_map --read_settings_files=on --write_settings_files=off ChiselProccessor -c ChiselProccessor
 Warning (18236): Number of processors has not been specified which may cause overloading on shared machines.  Set the global assignment NUM_PARALLEL_PROCESSORS in your QSF to an appropriate value for best performance.
 Info (20030): Parallel compilation is enabled and will use 4 of the 4 processors detected
-Info (12021): Found 3 design units, including 3 entities, in source file processor.v
-    Info (12023): Found entity 1: ALU File: C:/Users/sthir/OneDrive - University of Moratuwa/Desktop/Chisel_Processor/processor.v Line: 1
-    Info (12023): Found entity 2: bin27 File: C:/Users/sthir/OneDrive - University of Moratuwa/Desktop/Chisel_Processor/processor.v Line: 33
-    Info (12023): Found entity 3: processor File: C:/Users/sthir/OneDrive - University of Moratuwa/Desktop/Chisel_Processor/processor.v Line: 71
-Info (12127): Elaborating entity "processor" for the top level hierarchy
-Info (12128): Elaborating entity "ALU" for hierarchy "ALU:ALU" File: C:/Users/sthir/OneDrive - University of Moratuwa/Desktop/Chisel_Processor/processor.v Line: 91
-Info (12128): Elaborating entity "bin27" for hierarchy "bin27:Bin27" File: C:/Users/sthir/OneDrive - University of Moratuwa/Desktop/Chisel_Processor/processor.v Line: 95
-Info (278001): Inferred 3 megafunctions from design logic
-    Info (278004): Inferred divider/modulo megafunction ("lpm_divide") from the following logic: "ALU:ALU|Div0" File: C:/Users/sthir/OneDrive - University of Moratuwa/Desktop/Chisel_Processor/processor.v Line: 15
-    Info (278003): Inferred multiplier megafunction ("lpm_mult") from the following logic: "ALU:ALU|Mult0" File: C:/Users/sthir/OneDrive - University of Moratuwa/Desktop/Chisel_Processor/processor.v Line: 13
-    Info (278004): Inferred divider/modulo megafunction ("lpm_divide") from the following logic: "ALU:ALU|Mod0" File: C:/Users/sthir/OneDrive - University of Moratuwa/Desktop/Chisel_Processor/processor.v Line: 17
-Info (12130): Elaborated megafunction instantiation "ALU:ALU|lpm_divide:Div0" File: C:/Users/sthir/OneDrive - University of Moratuwa/Desktop/Chisel_Processor/processor.v Line: 15
-Info (12133): Instantiated megafunction "ALU:ALU|lpm_divide:Div0" with the following parameter: File: C:/Users/sthir/OneDrive - University of Moratuwa/Desktop/Chisel_Processor/processor.v Line: 15
-    Info (12134): Parameter "LPM_WIDTHN" = "16"
-    Info (12134): Parameter "LPM_WIDTHD" = "16"
-    Info (12134): Parameter "LPM_NREPRESENTATION" = "UNSIGNED"
-    Info (12134): Parameter "LPM_DREPRESENTATION" = "UNSIGNED"
-Info (12021): Found 1 design units, including 1 entities, in source file db/lpm_divide_lkm.tdf
-    Info (12023): Found entity 1: lpm_divide_lkm File: C:/Users/sthir/OneDrive - University of Moratuwa/Desktop/Chisel_Processor/db/lpm_divide_lkm.tdf Line: 25
-Info (12021): Found 1 design units, including 1 entities, in source file db/sign_div_unsign_dnh.tdf
-    Info (12023): Found entity 1: sign_div_unsign_dnh File: C:/Users/sthir/OneDrive - University of Moratuwa/Desktop/Chisel_Processor/db/sign_div_unsign_dnh.tdf Line: 25
-Info (12021): Found 1 design units, including 1 entities, in source file db/alt_u_div_eaf.tdf
-    Info (12023): Found entity 1: alt_u_div_eaf File: C:/Users/sthir/OneDrive - University of Moratuwa/Desktop/Chisel_Processor/db/alt_u_div_eaf.tdf Line: 27
-Info (12021): Found 1 design units, including 1 entities, in source file db/add_sub_7pc.tdf
-    Info (12023): Found entity 1: add_sub_7pc File: C:/Users/sthir/OneDrive - University of Moratuwa/Desktop/Chisel_Processor/db/add_sub_7pc.tdf Line: 23
-Info (12021): Found 1 design units, including 1 entities, in source file db/add_sub_8pc.tdf
-    Info (12023): Found entity 1: add_sub_8pc File: C:/Users/sthir/OneDrive - University of Moratuwa/Desktop/Chisel_Processor/db/add_sub_8pc.tdf Line: 23
-Info (12130): Elaborated megafunction instantiation "ALU:ALU|lpm_mult:Mult0" File: C:/Users/sthir/OneDrive - University of Moratuwa/Desktop/Chisel_Processor/processor.v Line: 13
-Info (12133): Instantiated megafunction "ALU:ALU|lpm_mult:Mult0" with the following parameter: File: C:/Users/sthir/OneDrive - University of Moratuwa/Desktop/Chisel_Processor/processor.v Line: 13
-    Info (12134): Parameter "LPM_WIDTHA" = "4"
-    Info (12134): Parameter "LPM_WIDTHB" = "4"
-    Info (12134): Parameter "LPM_WIDTHP" = "8"
-    Info (12134): Parameter "LPM_WIDTHR" = "8"
-    Info (12134): Parameter "LPM_WIDTHS" = "1"
-    Info (12134): Parameter "LPM_REPRESENTATION" = "UNSIGNED"
-    Info (12134): Parameter "INPUT_A_IS_CONSTANT" = "NO"
-    Info (12134): Parameter "INPUT_B_IS_CONSTANT" = "NO"
-    Info (12134): Parameter "MAXIMIZE_SPEED" = "5"
-Info (12021): Found 1 design units, including 1 entities, in source file db/mult_j8t.tdf
-    Info (12023): Found entity 1: mult_j8t File: C:/Users/sthir/OneDrive - University of Moratuwa/Desktop/Chisel_Processor/db/mult_j8t.tdf Line: 29
-Info (12130): Elaborated megafunction instantiation "ALU:ALU|lpm_divide:Mod0" File: C:/Users/sthir/OneDrive - University of Moratuwa/Desktop/Chisel_Processor/processor.v Line: 17
-Info (12133): Instantiated megafunction "ALU:ALU|lpm_divide:Mod0" with the following parameter: File: C:/Users/sthir/OneDrive - University of Moratuwa/Desktop/Chisel_Processor/processor.v Line: 17
-    Info (12134): Parameter "LPM_WIDTHN" = "16"
-    Info (12134): Parameter "LPM_WIDTHD" = "16"
-    Info (12134): Parameter "LPM_NREPRESENTATION" = "UNSIGNED"
-    Info (12134): Parameter "LPM_DREPRESENTATION" = "UNSIGNED"
-Info (12021): Found 1 design units, including 1 entities, in source file db/lpm_divide_ocm.tdf
-    Info (12023): Found entity 1: lpm_divide_ocm File: C:/Users/sthir/OneDrive - University of Moratuwa/Desktop/Chisel_Processor/db/lpm_divide_ocm.tdf Line: 25
-Warning (14284): Synthesized away the following node(s):
-    Warning (14285): Synthesized away the following LCELL buffer node(s):
-        Warning (14320): Synthesized away node "ALU:ALU|lpm_mult:Mult0|mult_j8t:auto_generated|le5a[4]" File: C:/Users/sthir/OneDrive - University of Moratuwa/Desktop/Chisel_Processor/db/mult_j8t.tdf Line: 43
-Info (13014): Ignored 48 buffer(s)
-    Info (13016): Ignored 4 CARRY_SUM buffer(s)
-    Info (13019): Ignored 44 SOFT buffer(s)
+Info (12021): Found 1 design units, including 1 entities, in source file regtest_tb.v
+    Info (12023): Found entity 1: RegTest_tb File: C:/Users/sthir/OneDrive - University of Moratuwa/Desktop/Chisel_Repo/Chisel_CCSS_Processor/Quartus_Project/Chisel_Processor/RegTest_tb.v Line: 3
+Info (12021): Found 3 design units, including 3 entities, in source file regtest.v
+    Info (12023): Found entity 1: Registers File: C:/Users/sthir/OneDrive - University of Moratuwa/Desktop/Chisel_Repo/Chisel_CCSS_Processor/Quartus_Project/Chisel_Processor/RegTest.v Line: 1
+    Info (12023): Found entity 2: bin27 File: C:/Users/sthir/OneDrive - University of Moratuwa/Desktop/Chisel_Repo/Chisel_CCSS_Processor/Quartus_Project/Chisel_Processor/RegTest.v Line: 73
+    Info (12023): Found entity 3: RegTest File: C:/Users/sthir/OneDrive - University of Moratuwa/Desktop/Chisel_Repo/Chisel_CCSS_Processor/Quartus_Project/Chisel_Processor/RegTest.v Line: 111
+Info (12127): Elaborating entity "RegTest" for the top level hierarchy
+Info (12128): Elaborating entity "Registers" for hierarchy "Registers:sumReg" File: C:/Users/sthir/OneDrive - University of Moratuwa/Desktop/Chisel_Repo/Chisel_CCSS_Processor/Quartus_Project/Chisel_Processor/RegTest.v Line: 134
+Info (12128): Elaborating entity "bin27" for hierarchy "bin27:Bin27" File: C:/Users/sthir/OneDrive - University of Moratuwa/Desktop/Chisel_Repo/Chisel_CCSS_Processor/Quartus_Project/Chisel_Processor/RegTest.v Line: 138
 Info (286030): Timing-Driven Synthesis is running
+Info (17049): 12 registers lost all their fanouts during netlist optimizations.
 Info (16010): Generating hard_block partition "hard_block:auto_generated_inst"
     Info (16011): Adding 0 node(s), including 0 DDIO, 0 PLL, 0 transceiver and 0 LCELL
-Warning (21074): Design contains 3 input pin(s) that do not drive logic
-    Warning (15610): No output dependent on input pin "clock" File: C:/Users/sthir/OneDrive - University of Moratuwa/Desktop/Chisel_Processor/processor.v Line: 72
-    Warning (15610): No output dependent on input pin "reset" File: C:/Users/sthir/OneDrive - University of Moratuwa/Desktop/Chisel_Processor/processor.v Line: 73
-    Warning (15610): No output dependent on input pin "io_bin[11]" File: C:/Users/sthir/OneDrive - University of Moratuwa/Desktop/Chisel_Processor/processor.v Line: 74
-Info (21057): Implemented 823 device resources after synthesis - the final resource count might be different
+Warning (21074): Design contains 5 input pin(s) that do not drive logic
+    Warning (15610): No output dependent on input pin "io_bin[7]" File: C:/Users/sthir/OneDrive - University of Moratuwa/Desktop/Chisel_Repo/Chisel_CCSS_Processor/Quartus_Project/Chisel_Processor/RegTest.v Line: 114
+    Warning (15610): No output dependent on input pin "io_bin[8]" File: C:/Users/sthir/OneDrive - University of Moratuwa/Desktop/Chisel_Repo/Chisel_CCSS_Processor/Quartus_Project/Chisel_Processor/RegTest.v Line: 114
+    Warning (15610): No output dependent on input pin "io_bin[9]" File: C:/Users/sthir/OneDrive - University of Moratuwa/Desktop/Chisel_Repo/Chisel_CCSS_Processor/Quartus_Project/Chisel_Processor/RegTest.v Line: 114
+    Warning (15610): No output dependent on input pin "io_bin[10]" File: C:/Users/sthir/OneDrive - University of Moratuwa/Desktop/Chisel_Repo/Chisel_CCSS_Processor/Quartus_Project/Chisel_Processor/RegTest.v Line: 114
+    Warning (15610): No output dependent on input pin "io_bin[11]" File: C:/Users/sthir/OneDrive - University of Moratuwa/Desktop/Chisel_Repo/Chisel_CCSS_Processor/Quartus_Project/Chisel_Processor/RegTest.v Line: 114
+Info (21057): Implemented 39 device resources after synthesis - the final resource count might be different
     Info (21058): Implemented 14 input pins
-    Info (21059): Implemented 8 output pins
-    Info (21061): Implemented 801 logic cells
-Info: Quartus Prime Analysis & Synthesis was successful. 0 errors, 8 warnings
-    Info: Peak virtual memory: 4764 megabytes
-    Info: Processing ended: Fri Aug 06 17:01:54 2021
-    Info: Elapsed time: 00:00:14
-    Info: Total CPU time (on all processors): 00:00:30
+    Info (21059): Implemented 7 output pins
+    Info (21061): Implemented 18 logic cells
+Info: Quartus Prime Analysis & Synthesis was successful. 0 errors, 7 warnings
+    Info: Peak virtual memory: 4779 megabytes
+    Info: Processing ended: Fri Aug 20 02:08:11 2021
+    Info: Elapsed time: 00:00:11
+    Info: Total CPU time (on all processors): 00:00:28
 
 

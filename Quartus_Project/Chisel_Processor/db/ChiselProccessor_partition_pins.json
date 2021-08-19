@@ -32,7 +32,11 @@
 					"strict" : false
 				},
 				{
-					"name" : "io_z",
+					"name" : "io_bin[6]",
+					"strict" : false
+				},
+				{
+					"name" : "reset",
 					"strict" : false
 				},
 				{
@@ -40,19 +44,15 @@
 					"strict" : false
 				},
 				{
-					"name" : "io_bin[4]",
-					"strict" : false
-				},
-				{
-					"name" : "io_bin[6]",
-					"strict" : false
-				},
-				{
 					"name" : "io_bin[5]",
 					"strict" : false
 				},
 				{
-					"name" : "io_bin[7]",
+					"name" : "clock",
+					"strict" : false
+				},
+				{
+					"name" : "io_bin[4]",
 					"strict" : false
 				},
 				{
@@ -65,18 +65,6 @@
 				},
 				{
 					"name" : "io_bin[1]",
-					"strict" : false
-				},
-				{
-					"name" : "io_bin[10]",
-					"strict" : false
-				},
-				{
-					"name" : "io_bin[9]",
-					"strict" : false
-				},
-				{
-					"name" : "io_bin[8]",
 					"strict" : false
 				}
 			]
