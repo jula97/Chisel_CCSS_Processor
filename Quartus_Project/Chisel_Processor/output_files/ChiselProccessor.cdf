@@ -4,7 +4,7 @@ JedecChain;
 	DefaultMfr(6E);
 
 	P ActionCode(Cfg)
-		Device PartName(EP4CE115F29) Path("C:/Users/sthir/OneDrive - University of Moratuwa/Desktop/Chisel_Processor/output_files/") File("ChiselProccessor.sof") MfrSpec(OpMask(1));
+		Device PartName(EP4CE115F29) Path("C:/Users/sthir/OneDrive - University of Moratuwa/Desktop/Chisel_Repo/Chisel_CCSS_Processor/Quartus_Project/Chisel_Processor/output_files/") File("ChiselProccessor.sof") MfrSpec(OpMask(1));
 
 ChainEnd;
 

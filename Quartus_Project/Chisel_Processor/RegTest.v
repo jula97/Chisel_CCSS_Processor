@@ -109,21 +109,24 @@ module bin27(
   assign io_seven = _GEN_15[6:0]; // @[bin27.scala 32:12]
 endmodule
 module RegTest(
-  input         clock,
-  input         reset,
-  input  [11:0] io_bin,
-  output [6:0]  io_seven
+  input        clock,
+  input        reset,
+  input  [3:0] io_RegIn,
+  input        io_RegReset,
+  input        io_RegInc,
+  input        io_RegWrite,
+  output [6:0] io_seven
 );
-  wire  sumReg_clock; // @[RegTest.scala 10:22]
-  wire  sumReg_reset; // @[RegTest.scala 10:22]
-  wire [15:0] sumReg_io_regIn; // @[RegTest.scala 10:22]
-  wire  sumReg_io_regReset; // @[RegTest.scala 10:22]
-  wire  sumReg_io_regInc; // @[RegTest.scala 10:22]
-  wire  sumReg_io_regWriteEnable; // @[RegTest.scala 10:22]
-  wire [15:0] sumReg_io_regOut; // @[RegTest.scala 10:22]
-  wire [3:0] Bin27_io_bin; // @[RegTest.scala 11:21]
-  wire [6:0] Bin27_io_seven; // @[RegTest.scala 11:21]
-  Registers sumReg ( // @[RegTest.scala 10:22]
+  wire  sumReg_clock; // @[RegTest.scala 13:22]
+  wire  sumReg_reset; // @[RegTest.scala 13:22]
+  wire [15:0] sumReg_io_regIn; // @[RegTest.scala 13:22]
+  wire  sumReg_io_regReset; // @[RegTest.scala 13:22]
+  wire  sumReg_io_regInc; // @[RegTest.scala 13:22]
+  wire  sumReg_io_regWriteEnable; // @[RegTest.scala 13:22]
+  wire [15:0] sumReg_io_regOut; // @[RegTest.scala 13:22]
+  wire [3:0] Bin27_io_bin; // @[RegTest.scala 14:21]
+  wire [6:0] Bin27_io_seven; // @[RegTest.scala 14:21]
+  Registers sumReg ( // @[RegTest.scala 13:22]
     .clock(sumReg_clock),
     .reset(sumReg_reset),
     .io_regIn(sumReg_io_regIn),
@@ -132,16 +135,16 @@ module RegTest(
     .io_regWriteEnable(sumReg_io_regWriteEnable),
     .io_regOut(sumReg_io_regOut)
   );
-  bin27 Bin27 ( // @[RegTest.scala 11:21]
+  bin27 Bin27 ( // @[RegTest.scala 14:21]
     .io_bin(Bin27_io_bin),
     .io_seven(Bin27_io_seven)
   );
-  assign io_seven = Bin27_io_seven; // @[RegTest.scala 19:12]
+  assign io_seven = Bin27_io_seven; // @[RegTest.scala 22:12]
   assign sumReg_clock = clock;
   assign sumReg_reset = reset;
-  assign sumReg_io_regIn = {{12'd0}, io_bin[3:0]}; // @[RegTest.scala 13:28]
-  assign sumReg_io_regReset = io_bin[4]; // @[RegTest.scala 14:31]
-  assign sumReg_io_regInc = io_bin[5]; // @[RegTest.scala 15:29]
-  assign sumReg_io_regWriteEnable = io_bin[6]; // @[RegTest.scala 16:37]
-  assign Bin27_io_bin = sumReg_io_regOut[3:0]; // @[RegTest.scala 18:35]
+  assign sumReg_io_regIn = {{12'd0}, io_RegIn}; // @[RegTest.scala 16:19]
+  assign sumReg_io_regReset = io_RegReset; // @[RegTest.scala 17:22]
+  assign sumReg_io_regInc = io_RegInc; // @[RegTest.scala 18:20]
+  assign sumReg_io_regWriteEnable = io_RegWrite; // @[RegTest.scala 19:28]
+  assign Bin27_io_bin = sumReg_io_regOut[3:0]; // @[RegTest.scala 20:16]
 endmodule

@@ -32,7 +32,7 @@
 					"strict" : false
 				},
 				{
-					"name" : "io_bin[6]",
+					"name" : "io_RegWrite",
 					"strict" : false
 				},
 				{
@@ -40,11 +40,11 @@
 					"strict" : false
 				},
 				{
-					"name" : "io_bin[0]",
+					"name" : "io_RegIn[0]",
 					"strict" : false
 				},
 				{
-					"name" : "io_bin[5]",
+					"name" : "io_RegInc",
 					"strict" : false
 				},
 				{
@@ -52,19 +52,19 @@
 					"strict" : false
 				},
 				{
-					"name" : "io_bin[4]",
+					"name" : "io_RegReset",
 					"strict" : false
 				},
 				{
-					"name" : "io_bin[3]",
+					"name" : "io_RegIn[3]",
 					"strict" : false
 				},
 				{
-					"name" : "io_bin[2]",
+					"name" : "io_RegIn[2]",
 					"strict" : false
 				},
 				{
-					"name" : "io_bin[1]",
+					"name" : "io_RegIn[1]",
 					"strict" : false
 				}
 			]

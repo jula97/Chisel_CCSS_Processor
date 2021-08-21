@@ -1,18 +1,13 @@
 |RegTest
 clock => sumReg_clock.IN1
 reset => sumReg_reset.IN1
-io_bin[0] => sumReg_io_regIn[0].IN1
-io_bin[1] => sumReg_io_regIn[1].IN1
-io_bin[2] => sumReg_io_regIn[2].IN1
-io_bin[3] => sumReg_io_regIn[3].IN1
-io_bin[4] => sumReg_io_regReset.IN1
-io_bin[5] => sumReg_io_regInc.IN1
-io_bin[6] => sumReg_io_regWriteEnable.IN1
-io_bin[7] => ~NO_FANOUT~
-io_bin[8] => ~NO_FANOUT~
-io_bin[9] => ~NO_FANOUT~
-io_bin[10] => ~NO_FANOUT~
-io_bin[11] => ~NO_FANOUT~
+io_RegIn[0] => sumReg_io_regIn[0].IN1
+io_RegIn[1] => sumReg_io_regIn[1].IN1
+io_RegIn[2] => sumReg_io_regIn[2].IN1
+io_RegIn[3] => sumReg_io_regIn[3].IN1
+io_RegReset => sumReg_io_regReset.IN1
+io_RegInc => sumReg_io_regInc.IN1
+io_RegWrite => sumReg_io_regWriteEnable.IN1
 io_seven[0] << bin27:Bin27.io_seven
 io_seven[1] << bin27:Bin27.io_seven
 io_seven[2] << bin27:Bin27.io_seven
