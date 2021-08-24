@@ -1,3 +1,12 @@
-# Ignore the node_modules directory
-IntelliJ_Project/
+*.bak
+target/
+projects/
+project/
+lib_managed/
+src_managed/
+project/boot/
+.history
+.cache
 
+*.json
+*.fir
