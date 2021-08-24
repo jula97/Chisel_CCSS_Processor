@@ -39,10 +39,10 @@
 
 set_global_assignment -name FAMILY "Cyclone IV E"
 set_global_assignment -name DEVICE EP4CE115F29C7
-set_global_assignment -name TOP_LEVEL_ENTITY RegTest
+set_global_assignment -name TOP_LEVEL_ENTITY OPR_demux
 set_global_assignment -name ORIGINAL_QUARTUS_VERSION 20.1.0
 set_global_assignment -name PROJECT_CREATION_TIME_DATE "19:56:24  AUGUST 04, 2021"
-set_global_assignment -name LAST_QUARTUS_VERSION "20.1.0 Lite Edition"
+set_global_assignment -name LAST_QUARTUS_VERSION "19.1.0 Lite Edition"
 set_global_assignment -name PROJECT_OUTPUT_DIRECTORY output_files
 set_global_assignment -name MIN_CORE_JUNCTION_TEMP 0
 set_global_assignment -name MAX_CORE_JUNCTION_TEMP 85
@@ -87,20 +87,8 @@ set_global_assignment -name EDA_SIMULATION_TOOL "ModelSim (Verilog)"
 set_global_assignment -name EDA_TIME_SCALE "1 ps" -section_id eda_simulation
 set_global_assignment -name EDA_OUTPUT_DATA_FORMAT "VERILOG HDL" -section_id eda_simulation
 set_global_assignment -name EDA_TEST_BENCH_ENABLE_STATUS TEST_BENCH_MODE -section_id eda_simulation
-set_global_assignment -name EDA_NATIVELINK_SIMULATION_TEST_BENCH RegTest_tb -section_id eda_simulation
-set_global_assignment -name EDA_TEST_BENCH_NAME RegTest_tb -section_id eda_simulation
-set_global_assignment -name EDA_DESIGN_INSTANCE_NAME NA -section_id RegTest_tb
-set_global_assignment -name EDA_TEST_BENCH_MODULE_NAME RegTest_tb -section_id RegTest_tb
-set_global_assignment -name EDA_TEST_BENCH_FILE RegTest_tb.v -section_id RegTest_tb
-set_global_assignment -name VERILOG_FILE TickGenerator.v
-set_global_assignment -name VERILOG_FILE scaledclock.v
-set_global_assignment -name VERILOG_FILE RegTest_tb.v
-set_global_assignment -name VERILOG_FILE RegTest.v
-set_global_assignment -name VERILOG_FILE TickGeneratorTester.v
+set_global_assignment -name EDA_NATIVELINK_SIMULATION_TEST_BENCH OPR_demux_tb -section_id eda_simulation
 set_location_assignment PIN_H15 -to clkLED
-set_global_assignment -name PARTITION_NETLIST_TYPE SOURCE -section_id Top
-set_global_assignment -name PARTITION_FITTER_PRESERVATION_LEVEL PLACEMENT_AND_ROUTING -section_id Top
-set_global_assignment -name PARTITION_COLOR 16764057 -section_id Top
 set_location_assignment PIN_AB28 -to io_RegIn[0]
 set_location_assignment PIN_AC28 -to io_RegIn[1]
 set_location_assignment PIN_AC27 -to io_RegIn[2]
@@ -108,4 +96,17 @@ set_location_assignment PIN_AD27 -to io_RegIn[3]
 set_location_assignment PIN_Y23 -to io_RegWrite
 set_location_assignment PIN_Y24 -to io_RegReset
 set_location_assignment PIN_AA22 -to io_RegInc
+set_global_assignment -name VERILOG_FILE ../../../MyTest/generated/OPR_demux.v
+set_global_assignment -name VERILOG_FILE TickGenerator.v
+set_global_assignment -name VERILOG_FILE scaledclock.v
+set_global_assignment -name VERILOG_FILE RegTest_tb.v
+set_global_assignment -name VERILOG_FILE RegTest.v
+set_global_assignment -name VERILOG_FILE TickGeneratorTester.v
+set_global_assignment -name PARTITION_NETLIST_TYPE SOURCE -section_id Top
+set_global_assignment -name PARTITION_FITTER_PRESERVATION_LEVEL PLACEMENT_AND_ROUTING -section_id Top
+set_global_assignment -name PARTITION_COLOR 16764057 -section_id Top
 set_instance_assignment -name PARTITION_HIERARCHY root_partition -to | -section_id Top
+set_global_assignment -name EDA_TEST_BENCH_NAME OPR_demux_tb -section_id eda_simulation
+set_global_assignment -name EDA_DESIGN_INSTANCE_NAME NA -section_id OPR_demux_tb
+set_global_assignment -name EDA_TEST_BENCH_MODULE_NAME OPR_demux_tb -section_id OPR_demux_tb
+set_global_assignment -name EDA_TEST_BENCH_FILE testbenches/OPR_demux_tb.v -section_id OPR_demux_tb

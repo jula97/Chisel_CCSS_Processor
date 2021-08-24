@@ -4,67 +4,175 @@
 			"name" : "Top",
 			"pins" : [
 				{
-					"name" : "io_seven[0]",
+					"name" : "io_WTR_operand[0]",
 					"strict" : false
 				},
 				{
-					"name" : "io_seven[1]",
+					"name" : "io_WTR_operand[1]",
 					"strict" : false
 				},
 				{
-					"name" : "io_seven[2]",
+					"name" : "io_WTR_operand[2]",
 					"strict" : false
 				},
 				{
-					"name" : "io_seven[3]",
+					"name" : "io_WTR_operand[3]",
 					"strict" : false
 				},
 				{
-					"name" : "io_seven[4]",
+					"name" : "io_WTR_operand[4]",
 					"strict" : false
 				},
 				{
-					"name" : "io_seven[5]",
+					"name" : "io_WTR_operand[5]",
 					"strict" : false
 				},
 				{
-					"name" : "io_seven[6]",
+					"name" : "io_WTR_operand[6]",
 					"strict" : false
 				},
 				{
-					"name" : "io_RegWrite",
+					"name" : "io_WTR_operand[7]",
 					"strict" : false
 				},
 				{
-					"name" : "reset",
+					"name" : "io_INC_operand[0]",
 					"strict" : false
 				},
 				{
-					"name" : "io_RegIn[0]",
+					"name" : "io_INC_operand[1]",
 					"strict" : false
 				},
 				{
-					"name" : "io_RegInc",
+					"name" : "io_INC_operand[2]",
 					"strict" : false
 				},
 				{
-					"name" : "clock",
+					"name" : "io_INC_operand[3]",
 					"strict" : false
 				},
 				{
-					"name" : "io_RegReset",
+					"name" : "io_INC_operand[4]",
 					"strict" : false
 				},
 				{
-					"name" : "io_RegIn[3]",
+					"name" : "io_INC_operand[5]",
 					"strict" : false
 				},
 				{
-					"name" : "io_RegIn[2]",
+					"name" : "io_INC_operand[6]",
 					"strict" : false
 				},
 				{
-					"name" : "io_RegIn[1]",
+					"name" : "io_INC_operand[7]",
+					"strict" : false
+				},
+				{
+					"name" : "io_RESET_operand[0]",
+					"strict" : false
+				},
+				{
+					"name" : "io_RESET_operand[1]",
+					"strict" : false
+				},
+				{
+					"name" : "io_RESET_operand[2]",
+					"strict" : false
+				},
+				{
+					"name" : "io_RESET_operand[3]",
+					"strict" : false
+				},
+				{
+					"name" : "io_RESET_operand[4]",
+					"strict" : false
+				},
+				{
+					"name" : "io_RESET_operand[5]",
+					"strict" : false
+				},
+				{
+					"name" : "io_RESET_operand[6]",
+					"strict" : false
+				},
+				{
+					"name" : "io_RESET_operand[7]",
+					"strict" : false
+				},
+				{
+					"name" : "io_WTA_operand[0]",
+					"strict" : false
+				},
+				{
+					"name" : "io_WTA_operand[1]",
+					"strict" : false
+				},
+				{
+					"name" : "io_WTA_operand[2]",
+					"strict" : false
+				},
+				{
+					"name" : "io_WTA_operand[3]",
+					"strict" : false
+				},
+				{
+					"name" : "io_WTA_operand[4]",
+					"strict" : false
+				},
+				{
+					"name" : "io_WTA_operand[5]",
+					"strict" : false
+				},
+				{
+					"name" : "io_WTA_operand[6]",
+					"strict" : false
+				},
+				{
+					"name" : "io_WTA_operand[7]",
+					"strict" : false
+				},
+				{
+					"name" : "io_operand[0]",
+					"strict" : false
+				},
+				{
+					"name" : "io_OPR_sel[1]",
+					"strict" : false
+				},
+				{
+					"name" : "io_OPR_sel[0]",
+					"strict" : false
+				},
+				{
+					"name" : "io_OPR_sel[2]",
+					"strict" : false
+				},
+				{
+					"name" : "io_operand[1]",
+					"strict" : false
+				},
+				{
+					"name" : "io_operand[2]",
+					"strict" : false
+				},
+				{
+					"name" : "io_operand[3]",
+					"strict" : false
+				},
+				{
+					"name" : "io_operand[4]",
+					"strict" : false
+				},
+				{
+					"name" : "io_operand[5]",
+					"strict" : false
+				},
+				{
+					"name" : "io_operand[6]",
+					"strict" : false
+				},
+				{
+					"name" : "io_operand[7]",
 					"strict" : false
 				}
 			]
