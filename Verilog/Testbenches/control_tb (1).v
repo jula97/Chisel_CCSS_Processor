@@ -11,13 +11,12 @@ module control_tb;
 	 
 			  
 	 control controlUnit(
-		.io_clock (clk),
-		.io_z (z),
-		.io_instruction_opcode (opcode),
-		.io_rst (rst),
-		.io_NoC (noc),
-		.io_ctrlsig (ctrlsig),
-		.io_end_process (end_proc) );
+		.clk (clk),
+		.z (z),
+		.instruction_opcode (opcode),
+		.rst (rst),
+		.ctrlsig (ctrlsig),
+		.end_process (end_proc) );
 
     initial begin
 		  clk = 0;
@@ -25,8 +24,8 @@ module control_tb;
 		  noc = 16'd1;
 		  opcode = 6'd1;  //change this opcode as required
 		  rst = 0;
-		  #2 rst = 1;
-		  #2 rst = 0;
+		  #20 rst = 1;
+		  #20 rst = 0;
 		  //#31 opcode = 6'd25;  // change the delay given for this endop opcode according to the previous opcode
 
     end

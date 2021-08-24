@@ -68,7 +68,7 @@ class Controller extends Module{
   val stacreg2   = 54.U
   val stacreg3   = 55.U
 
-  val endOP      = 67.U
+  val endOP      = 57.U
 
 
 
