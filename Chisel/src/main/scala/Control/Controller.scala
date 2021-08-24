@@ -26,18 +26,18 @@ class Controller extends Module{
   switch(state){
     is(fetch1) {
       state := fetch2
-      ctrlSig := "b0000000000000000000000000".U
+      ctrlSig := "b0000000000001000000000000".U
     }
     is(fetch2){
       state := fetch3
-      ctrlSig := "b0000000000000000000000000".U
+      ctrlSig := "b0000000000000001000000000".U
     }
     is(fetch3){
       state := fetch4
-      ctrlSig := "b0000000000000000000000000".U
+      ctrlSig := "b0100000000000000000000000".U
     }
     is(fetch4){
-      ctrlSig := "b0000000000000000000000000".U
+      ctrlSig := "b0000000000000000000000100".U
       when (opcode === 1.U) {state := clAC1}
         .elsewhen(opcode === 2.U) {state := ldAC1}
         .elsewhen(opcode === 3.U) {state := stAC1}
@@ -46,33 +46,33 @@ class Controller extends Module{
     }
     is(clAC1){
       state := fetch1
-      ctrlSig := "b0000000000000000000000000".U
+      ctrlSig := "b0000000000000000000001000".U
     }
 
     is(ldAC1){
       state := ldAC2
-      ctrlSig := "b0000000000000000000000000".U
+      ctrlSig := "b0000000000000100000000000".U
     }
     is(ldAC2){
       state := ldAC3
-      ctrlSig := "b0000000000000000000000000".U
+      ctrlSig := "b0000000000000001100000000".U
     }
     is(ldAC3){
       state := ldAC4
-      ctrlSig := "b0000000000000000000000000".U
+      ctrlSig := "b000000110000000010000000".U
     }
     is(ldAC4){
       state := ldAC5
-      ctrlSig := "b0000000000000000000000000".U
+      ctrlSig := "b0000000100000000000001000".U
     }
     is(ldAC5){
       state := fetch1
-      ctrlSig := "b0000000000000000000000000".U
+      ctrlSig := "b0000000000100000000000000".U
     }
 
     is(stAC1){
       state := stAC2
-      ctrlSig := "b0000000000000000000000000".U
+      ctrlSig := "b0000000000001100000000000".U
     }
     is(stAC2){
       state := stAC3
@@ -80,7 +80,7 @@ class Controller extends Module{
     }
     is(stAC3){
       state := fetch1
-      ctrlSig := "b0000000000000000000000000".U
+      ctrlSig := "b0000000000011111110000000".U
     }
 
     is(jump1){
@@ -90,12 +90,12 @@ class Controller extends Module{
 
     is(endOP){
       state := endOP
-      ctrlSig := "b0000000000000000000000000".U
+      ctrlSig := "b0000000000000000000111000".U
     }
   }
 
 }
 
 object ControlMain extends App {
-  (new chisel3.stage.ChiselStage).emitVerilog(new Controller())
+  (new chisel3.stage.ChiselStage).emitVerilog(new Controller(), Array("--target-dir", "generated"))
 }

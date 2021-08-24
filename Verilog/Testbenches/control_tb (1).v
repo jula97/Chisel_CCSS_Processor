@@ -11,13 +11,13 @@ module control_tb;
 	 
 			  
 	 control controlUnit(
-		.clk (clk),
-		.z (z),
-		.instruction_opcode (opcode),
-		.rst (rst),
-		.NoC (noc),
-		.ctrlsig (ctrlsig),
-		.end_process (end_proc) );
+		.io_clock (clk),
+		.io_z (z),
+		.io_instruction_opcode (opcode),
+		.io_rst (rst),
+		.io_NoC (noc),
+		.io_ctrlsig (ctrlsig),
+		.io_end_process (end_proc) );
 
     initial begin
 		  clk = 0;
