@@ -1,31 +1,28 @@
 import chisel3._
 import chisel3.util._
 
-class TickGenerator extends Module{
+class ClockScaler extends Module{
   val io = IO(new Bundle{
-    val inClk = Input(UInt(1.W))
-    val clkEn = Input(UInt(1.W))
-    val maxScale = Input(SInt(10.W))
-    val outTick = Output(UInt(1.W))
+    val clkEn   = Input(Bool())
+    val outClk  = Output(UInt(1.W))
   })
 
-  val N = io.maxScale
-  val tick = WireDefault(0.U(1.W))
-  val MAX = (N - 2.S)
-  val counterReg = RegInit(MAX)
-
-  when(io.clkEn === 1.U){
-    counterReg := counterReg - 1.S
-    tick := 0.U
-
-    when(counterReg(9)) {
-      counterReg := MAX
-      tick := 1.U
+  val counterReg    = RegInit(0.U(32.W))
+  val maxbit        = 16.U
+  val outClk        = RegInit(0.U(1.W))
+  
+  when(io.clkEn){
+    when(counterReg(maxbit) === 1.U ){
+      counterReg    := 0.U
+      outClk        := ~outClk
+    }.otherwise{
+        counterReg  := counterReg + 1.U
     }
   }
-  io.outTick := tick
+
+  io.outClk := outClk  
 }
 
-object TickCounter extends App {
-  (new chisel3.stage.ChiselStage).emitVerilog(new TickGenerator())
+object ClockScalerMain extends App {
+  (new chisel3.stage.ChiselStage).emitVerilog(new ClockScaler(),Array("--target-dir", "generated"))
 }
