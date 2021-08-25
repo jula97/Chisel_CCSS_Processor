@@ -10,7 +10,7 @@ module ClockScaler(
 `endif // RANDOMIZE_REG_INIT
   reg [31:0] counterReg; // @[TickGenerator.scala 10:30]
   reg  outClk; // @[TickGenerator.scala 12:30]
-  wire [31:0] _T = {{16'd0}, counterReg[31:16]}; // @[TickGenerator.scala 15:20]
+  wire [31:0] _T = {{1'd0}, counterReg[31:1]}; // @[TickGenerator.scala 15:20]
   wire [31:0] _T_5 = counterReg + 32'h1; // @[TickGenerator.scala 19:35]
   assign io_outClk = outClk; // @[TickGenerator.scala 23:13]
   always @(posedge clock) begin

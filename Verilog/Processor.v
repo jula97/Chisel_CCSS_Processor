@@ -12,16 +12,16 @@ wire [15:0]DmemIn;
 wire DmemWrtEn;
 //wire end_process;
 
-ClockScaler SCALER(
-    .clock(clk),
-    .reset(reset),
-    .io_clkEn(clk_en),
-    .io_outClk(clk_out)
-);
+// ClockScaler SCALER(
+//     .clock(clk),
+//     .reset(reset),
+//     .io_clkEn(clk_en),
+//     .io_outClk(clk_out)
+// );
 
 IRAM IRAM1 (
 	.address(ImemAddr),
-	.clock(clk_out),
+	.clock(clk),
 	.data(0),
 	.wren(0),
 	.q(ImemOut));
@@ -29,13 +29,13 @@ IRAM IRAM1 (
 
 DRAM DRAM1(
 	.address(DmemAddr),
-	.clock(clk_out),
+	.clock(clk),
 	.data(DmemIn),
 	.wren(DmemWrtEn),
 	.q(DmemOut));
 
 Top TopProc(
-  .clock(clk_out),
+  .clock(clk),
   .reset(reset),
   .io_ImemOut(ImemOut),      //input  [23:0] io_ImemOut,
   .io_ImemAddr(ImemAddr),     //output [15:0] io_ImemAddr,

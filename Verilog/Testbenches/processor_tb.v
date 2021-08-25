@@ -13,14 +13,14 @@ module processor_tb (
     Processor Proc (.*);
 
 
-Initial begin
+initial begin
     clk    = 0;
     clk_en = 0;
     reset  = 0;
     
     #50 reset  = 1;
         clk_en = 1;
-    #50 reset  = 0;
+    #500 reset  = 0;
 end
 
 always

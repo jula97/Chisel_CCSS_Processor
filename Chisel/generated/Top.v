@@ -245,36 +245,94 @@ end // initial
 `endif // SYNTHESIS
 endmodule
 module ALU(
+  input         clock,
+  input         reset,
   input  [15:0] io_a,
   input  [15:0] io_b,
   input  [2:0]  io_fn,
   output [15:0] io_y,
   output        io_z
 );
+`ifdef RANDOMIZE_REG_INIT
+  reg [31:0] _RAND_0;
+`endif // RANDOMIZE_REG_INIT
+  reg [15:0] y; // @[ALU.scala 13:18]
   wire  _T = 3'h1 == io_fn; // @[Conditional.scala 37:30]
-  wire [15:0] _T_2 = io_a + io_b; // @[ALU.scala 16:28]
+  wire [15:0] _T_2 = io_a + io_b; // @[ALU.scala 16:25]
   wire  _T_3 = 3'h2 == io_fn; // @[Conditional.scala 37:30]
-  wire [15:0] _T_4 = io_a ^ io_b; // @[ALU.scala 17:28]
+  wire [15:0] _T_4 = io_a ^ io_b; // @[ALU.scala 17:25]
   wire  _T_5 = 3'h3 == io_fn; // @[Conditional.scala 37:30]
-  wire [31:0] _T_6 = io_a * io_b; // @[ALU.scala 18:28]
+  wire [31:0] _T_6 = io_a * io_b; // @[ALU.scala 18:25]
   wire  _T_7 = 3'h4 == io_fn; // @[Conditional.scala 37:30]
-  wire [15:0] _T_8 = io_a / io_b; // @[ALU.scala 19:28]
+  wire [15:0] _T_8 = io_a / io_b; // @[ALU.scala 19:25]
   wire  _T_9 = 3'h5 == io_fn; // @[Conditional.scala 37:30]
-  wire [15:0] _GEN_7 = io_a % io_b; // @[ALU.scala 20:28]
-  wire [15:0] _T_10 = _GEN_7[15:0]; // @[ALU.scala 20:28]
+  wire [15:0] _GEN_7 = io_a % io_b; // @[ALU.scala 20:25]
+  wire [15:0] _T_10 = _GEN_7[15:0]; // @[ALU.scala 20:25]
   wire  _T_11 = 3'h6 == io_fn; // @[Conditional.scala 37:30]
-  wire [17:0] _T_12 = io_a * 16'h2; // @[ALU.scala 21:28]
+  wire [17:0] _T_12 = io_a * 16'h2; // @[ALU.scala 21:25]
   wire  _T_13 = 3'h7 == io_fn; // @[Conditional.scala 37:30]
-  wire [15:0] _T_15 = io_a - io_b; // @[ALU.scala 22:28]
-  wire [15:0] _GEN_0 = _T_13 ? _T_15 : 16'h0; // @[Conditional.scala 39:67 ALU.scala 22:20 ALU.scala 13:8]
-  wire [17:0] _GEN_1 = _T_11 ? _T_12 : {{2'd0}, _GEN_0}; // @[Conditional.scala 39:67 ALU.scala 21:20]
-  wire [17:0] _GEN_2 = _T_9 ? {{2'd0}, _T_10} : _GEN_1; // @[Conditional.scala 39:67 ALU.scala 20:20]
-  wire [17:0] _GEN_3 = _T_7 ? {{2'd0}, _T_8} : _GEN_2; // @[Conditional.scala 39:67 ALU.scala 19:20]
-  wire [31:0] _GEN_4 = _T_5 ? _T_6 : {{14'd0}, _GEN_3}; // @[Conditional.scala 39:67 ALU.scala 18:20]
-  wire [31:0] _GEN_5 = _T_3 ? {{16'd0}, _T_4} : _GEN_4; // @[Conditional.scala 39:67 ALU.scala 17:20]
-  wire [31:0] _GEN_6 = _T ? {{16'd0}, _T_2} : _GEN_5; // @[Conditional.scala 40:58 ALU.scala 16:20]
-  assign io_y = _GEN_6[15:0];
-  assign io_z = io_y == 16'h0; // @[ALU.scala 25:14]
+  wire [15:0] _T_15 = io_a - io_b; // @[ALU.scala 22:25]
+  wire [15:0] _GEN_0 = _T_13 ? _T_15 : y; // @[Conditional.scala 39:67 ALU.scala 22:17 ALU.scala 13:18]
+  wire [17:0] _GEN_1 = _T_11 ? _T_12 : {{2'd0}, _GEN_0}; // @[Conditional.scala 39:67 ALU.scala 21:17]
+  wire [17:0] _GEN_2 = _T_9 ? {{2'd0}, _T_10} : _GEN_1; // @[Conditional.scala 39:67 ALU.scala 20:17]
+  wire [17:0] _GEN_3 = _T_7 ? {{2'd0}, _T_8} : _GEN_2; // @[Conditional.scala 39:67 ALU.scala 19:17]
+  wire [31:0] _GEN_4 = _T_5 ? _T_6 : {{14'd0}, _GEN_3}; // @[Conditional.scala 39:67 ALU.scala 18:17]
+  wire [31:0] _GEN_5 = _T_3 ? {{16'd0}, _T_4} : _GEN_4; // @[Conditional.scala 39:67 ALU.scala 17:17]
+  wire [31:0] _GEN_6 = _T ? {{16'd0}, _T_2} : _GEN_5; // @[Conditional.scala 40:58 ALU.scala 16:17]
+  assign io_y = y; // @[ALU.scala 31:8]
+  assign io_z = y == 16'h0; // @[ALU.scala 25:12]
+  always @(posedge clock) begin
+    if (reset) begin // @[ALU.scala 13:18]
+      y <= 16'h0; // @[ALU.scala 13:18]
+    end else begin
+      y <= _GEN_6[15:0];
+    end
+  end
+// Register and memory initialization
+`ifdef RANDOMIZE_GARBAGE_ASSIGN
+`define RANDOMIZE
+`endif
+`ifdef RANDOMIZE_INVALID_ASSIGN
+`define RANDOMIZE
+`endif
+`ifdef RANDOMIZE_REG_INIT
+`define RANDOMIZE
+`endif
+`ifdef RANDOMIZE_MEM_INIT
+`define RANDOMIZE
+`endif
+`ifndef RANDOM
+`define RANDOM $random
+`endif
+`ifdef RANDOMIZE_MEM_INIT
+  integer initvar;
+`endif
+`ifndef SYNTHESIS
+`ifdef FIRRTL_BEFORE_INITIAL
+`FIRRTL_BEFORE_INITIAL
+`endif
+initial begin
+  `ifdef RANDOMIZE
+    `ifdef INIT_RANDOM
+      `INIT_RANDOM
+    `endif
+    `ifndef VERILATOR
+      `ifdef RANDOMIZE_DELAY
+        #`RANDOMIZE_DELAY begin end
+      `else
+        #0.002 begin end
+      `endif
+    `endif
+`ifdef RANDOMIZE_REG_INIT
+  _RAND_0 = {1{`RANDOM}};
+  y = _RAND_0[15:0];
+`endif // RANDOMIZE_REG_INIT
+  `endif // RANDOMIZE
+end // initial
+`ifdef FIRRTL_AFTER_INITIAL
+`FIRRTL_AFTER_INITIAL
+`endif
+`endif // SYNTHESIS
 endmodule
 module Decoders(
   input  [6:0] io_bin,
@@ -773,6 +831,8 @@ module Top(
   wire [5:0] CU_io_instruction_opcode; // @[top.scala 111:27]
   wire [24:0] CU_io_ctrlsig; // @[top.scala 111:27]
   wire  CU_io_end_process; // @[top.scala 111:27]
+  wire  ALU_clock; // @[top.scala 118:27]
+  wire  ALU_reset; // @[top.scala 118:27]
   wire [15:0] ALU_io_a; // @[top.scala 118:27]
   wire [15:0] ALU_io_b; // @[top.scala 118:27]
   wire [2:0] ALU_io_fn; // @[top.scala 118:27]
@@ -947,6 +1007,8 @@ module Top(
     .io_end_process(CU_io_end_process)
   );
   ALU ALU ( // @[top.scala 118:27]
+    .clock(ALU_clock),
+    .reset(ALU_reset),
     .io_a(ALU_io_a),
     .io_b(ALU_io_b),
     .io_fn(ALU_io_fn),
@@ -1161,6 +1223,8 @@ module Top(
   assign CU_reset = reset;
   assign CU_io_z = REG; // @[top.scala 112:33]
   assign CU_io_instruction_opcode = IRout[5:0]; // @[top.scala 113:41]
+  assign ALU_clock = clock;
+  assign ALU_reset = reset;
   assign ALU_io_a = reg_AC_io_regOut; // @[top.scala 119:29]
   assign ALU_io_b = bus[15:0]; // @[top.scala 120:35]
   assign ALU_io_fn = ctrlsig[14:12]; // @[top.scala 121:39]
