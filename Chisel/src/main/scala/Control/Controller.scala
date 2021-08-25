@@ -7,7 +7,7 @@ class Controller extends Module{
     val rst = Input(UInt(1.W))
     val instruction_opcode = Input(UInt(6.W))
     val NoC = Input(UInt(16.W))
-    val ctrlSig = Output(UInt(25.W))
+    val ctrlsig = Output(UInt(25.W))
     val end_process = Output(UInt(1.W))
   })
 
@@ -76,11 +76,11 @@ class Controller extends Module{
 
 
   val state = RegInit(0.U(6.W))
-  val ctrlSig = WireInit(0.U(25.W))
+  val ctrlsig = WireInit(0.U(25.W))
   // val end_op = WireInit(0.U(1.W))
   
 
-  io.ctrlSig := ctrlSig
+  io.ctrlsig := ctrlsig
   io.end_process := 0.U
   val opcode = io.instruction_opcode
   val z = io.z
@@ -88,18 +88,18 @@ class Controller extends Module{
   switch(state){
     is(fetch1) {
       state := fetch2
-      ctrlSig := "b00_0000_0000_000_0000_000_00000".U
+      ctrlsig := "b00_0000_0000_000_0000_000_00000".U
     }
     is(fetch2){
       state := fetch3
-      ctrlSig := "b00_0000_0000_000_0000_000_00000".U
+      ctrlsig := "b00_0000_0000_000_0000_000_00000".U
     }
     is(fetch3){
       state := fetch4
-      ctrlSig := "b00_0001_1000_000_0001_000_01000".U
+      ctrlsig := "b00_0001_1000_000_0001_000_01000".U
     }
     is(fetch4){
-      ctrlSig := "b00_0000_0000_000_0000_000_00000".U
+      ctrlsig := "b00_0000_0000_000_0000_000_00000".U
       when (opcode === 1.U) {state := clac1}
         .elsewhen(opcode === 2.U) {state := ldac1}
         .elsewhen(opcode === 3.U) {state := stac1}
@@ -124,154 +124,154 @@ class Controller extends Module{
 
     is(add1){
       state := add2
-      ctrlSig := "b00_0000_0000_001_0010_010_00000".U
+      ctrlsig := "b00_0000_0000_001_0010_010_00000".U
     }
     is(add2){
       state := fetch1
-      ctrlSig := "b00_0000_0000_000_1010_010_00000".U
+      ctrlsig := "b00_0000_0000_000_1010_010_00000".U
     }
 
     is(xor1){
       state := xor2
-      ctrlSig := "b00_0000_0000_010_0010_010_00000".U
+      ctrlsig := "b00_0000_0000_010_0010_010_00000".U
     }
     is(xor2){
       state := fetch1
-      ctrlSig := "b00_0000_0000_000_1010_010_00000".U
+      ctrlsig := "b00_0000_0000_000_1010_010_00000".U
     }
 
     is(mul1){
       state := mul2
-      ctrlSig := "b00_0000_0000_011_0010_010_00000".U
+      ctrlsig := "b00_0000_0000_011_0010_010_00000".U
     }
     is(mul2){
       state := fetch1
-      ctrlSig := "b00_0000_0000_000_1010_010_00000".U
+      ctrlsig := "b00_0000_0000_000_1010_010_00000".U
     }
 
     is(ldac1){
       state := ldac2
-      ctrlSig := "b00_0100_0100_000_0000_000_00000".U
+      ctrlsig := "b00_0100_0100_000_0000_000_00000".U
     }
     is(ldac2){
       state := ldac3
-      ctrlSig := "b00_0000_0000_000_0000_000_00000".U
+      ctrlsig := "b00_0000_0000_000_0000_000_00000".U
     }
     is(ldac3){
       state := ldac4
-      ctrlSig := "b00_0000_0000_000_0000_000_00000".U
+      ctrlsig := "b00_0000_0000_000_0000_000_00000".U
     }
     is(ldac4){
       state := ldac5
-      ctrlSig := "b00_0000_0010_000_0000_000_01000".U
+      ctrlsig := "b00_0000_0010_000_0000_000_01000".U
     }
     is(ldac5){
       state := fetch1
-      ctrlSig := "b00_0100_0000_000_0100_000_00000".U
+      ctrlsig := "b00_0100_0000_000_0100_000_00000".U
     }
         
     is(moveac1){
       state := fetch1
-      ctrlSig := "b00_0010_0000_000_0000_011_00100".U
+      ctrlsig := "b00_0010_0000_000_0000_011_00100".U
     }
 
     is(movetoac1){
       state := fetch1
-      ctrlSig := "b00_0000_0000_000_0110_010_00000".U
+      ctrlsig := "b00_0000_0000_000_0110_010_00000".U
     }
 
     is(div1){
       state := div2
-      ctrlSig := "b00_0000_0000_100_0010_010_00000".U
+      ctrlsig := "b00_0000_0000_100_0010_010_00000".U
     }
     is(div2){
       state := fetch1
-      ctrlSig := "b00_0000_0000_000_1010_010_00000".U
+      ctrlsig := "b00_0000_0000_000_1010_010_00000".U
     }
     is(mod1){
       state := mod2
-      ctrlSig := "b00_0000_0000_101_0010_010_00000".U
+      ctrlsig := "b00_0000_0000_101_0010_010_00000".U
     }
     is(mod2){
       state := fetch1
-      ctrlSig := "b00_0000_0000_000_1010_010_00000".U
+      ctrlsig := "b00_0000_0000_000_1010_010_00000".U
     }
     is(inc1){
       state := fetch1
-      ctrlSig := "b00_0000_0000_000_0000_100_00001".U
+      ctrlsig := "b00_0000_0000_000_0000_100_00001".U
     }
     is(reset1){
       state := fetch1
-      ctrlSig := "b00_0000_0000_000_0000_001_00010".U
+      ctrlsig := "b00_0000_0000_000_0000_001_00010".U
     }
     is(stac1){
       state := stac2
-      ctrlSig := "b00_0100_0100_000_0000_000_00000".U
+      ctrlsig := "b00_0100_0100_000_0000_000_00000".U
     }
     is(stac2){
       state := stac3
-      ctrlSig := "b00_0010_0001_000_0000_000_01000".U
+      ctrlsig := "b00_0010_0001_000_0000_000_01000".U
     }
     is(stac3){
       state := fetch1
-      ctrlSig := "b00_0000_0001_000_0000_000_00000".U
+      ctrlsig := "b00_0000_0001_000_0000_000_00000".U
     }
     is(nop1){
       state := fetch1
-      ctrlSig := "b00_0000_0000_000_0000_000_00000".U
+      ctrlsig := "b00_0000_0000_000_0000_000_00000".U
     }
     is(clac1){
       state := fetch1
-      ctrlSig := "b00_1000_0000_000_0000_000_00000".U
+      ctrlsig := "b00_1000_0000_000_0000_000_00000".U
     }
     is(jump1){
       state := fetch1
-      ctrlSig := "b00_0100_0000_000_0000_000_10000".U
+      ctrlsig := "b00_0100_0000_000_0000_000_10000".U
     }
     is(jumpzy1){
       state := fetch1
-      ctrlSig := "b00_0100_0000_000_0000_000_10000".U
+      ctrlsig := "b00_0100_0000_000_0000_000_10000".U
     }
     is(jumpzn1){
       state := fetch1
-      ctrlSig := "b00_0000_0000_000_0000_000_00000".U
+      ctrlsig := "b00_0000_0000_000_0000_000_00000".U
     }
     is(ldacreg1){
       state := ldacreg2
-      ctrlSig := "b00_0000_0100_000_0010_010_00000".U
+      ctrlsig := "b00_0000_0100_000_0010_010_00000".U
     }
     is(ldacreg2){
       state := ldacreg3
-      ctrlSig := "b00_0000_0000_000_0000_000_00000".U
+      ctrlsig := "b00_0000_0000_000_0000_000_00000".U
     }
     is(ldacreg3){
       state := ldacreg4
-      ctrlSig := "b00_0000_0000_000_0000_000_00000".U
+      ctrlsig := "b00_0000_0000_000_0000_000_00000".U
     }
     is(ldacreg4){
       state := ldacreg5
-      ctrlSig := "b00_0000_0010_000_0000_000_01000".U
+      ctrlsig := "b00_0000_0010_000_0000_000_01000".U
     }
     is(ldacreg5){
       state := fetch1
-      ctrlSig := "b00_0100_0000_000_0100_000_00000".U
+      ctrlsig := "b00_0100_0000_000_0100_000_00000".U
     }
     is(stacreg1){
       state := stacreg2
-      ctrlSig := "b00_0000_0100_000_0010_010_00000".U
+      ctrlsig := "b00_0000_0100_000_0010_010_00000".U
     }
     is(stacreg2){
       state := stacreg3
-      ctrlSig := "b00_0010_0001_000_0000_000_01000".U
+      ctrlsig := "b00_0010_0001_000_0000_000_01000".U
     }
     is(stacreg3){
       state := fetch1
-      ctrlSig := "b00_0000_0001_000_0000_000_00000".U
+      ctrlsig := "b00_0000_0001_000_0000_000_00000".U
     }
     is(endOP){
       state := endOP
       io.end_process := 1.U
-      ctrlSig := "b00_0000_0000_000_0000_000_00000".U
+      ctrlsig := "b00_0000_0000_000_0000_000_00000".U
     }    
   }
 
