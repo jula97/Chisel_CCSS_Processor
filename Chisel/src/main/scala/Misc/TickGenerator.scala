@@ -8,7 +8,7 @@ class ClockScaler extends Module{
   })
 
   val counterReg    = RegInit(0.U(32.W))
-  val maxbit        = 16.U
+  val maxbit        = 1.U
   val outClk        = RegInit(0.U(1.W))
   
   when(io.clkEn){
