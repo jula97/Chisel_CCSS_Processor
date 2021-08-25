@@ -4,9 +4,9 @@ import chisel3.util._
 class Controller extends Module{
   val io = IO(new Bundle {
     val z = Input(UInt(1.W))
-    val rst = Input(UInt(1.W))
+    // val rst = Input(UInt(1.W))
     val instruction_opcode = Input(UInt(6.W))
-    val NoC = Input(UInt(16.W))
+    // val NoC = Input(UInt(16.W))
     val ctrlsig = Output(UInt(25.W))
     val end_process = Output(UInt(1.W))
   })
